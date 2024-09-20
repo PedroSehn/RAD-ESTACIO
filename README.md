@@ -6,46 +6,30 @@ Este é um sistema de gestão de compras de supermercado, desenvolvido em Python
 
 ### Tabelas
 
-O banco de dados **gestao** é composto pelas seguintes tabelas:
+No diretório do projeto, há dois arquivos `.txt` que ajudarão na configuração do banco de dados:
 
-#### 1. **categorias**
-Tabela que armazena as categorias dos produtos.
+- **`geracao-tabelas.txt`**: Este arquivo contém os comandos SQL para criar as tabelas do banco de dados. Use o pgAdmin ou o terminal PostgreSQL para executar este arquivo.
 
-| Coluna | Tipo        | Descrição              |
-|--------|-------------|------------------------|
-| id     | SERIAL      | Chave primária          |
-| nome   | VARCHAR(100)| Nome da categoria       |
+  Para executar no pgAdmin:
+  
+  1. Vá até o menu de query.
+  2. Copie e cole o conteúdo do arquivo `geracao-tabelas.txt`.
+  3. Execute o script para criar as tabelas.
 
-#### 2. **produtos**
-Tabela que armazena os produtos, seus preços, categorias e datas de inserção.
+  As tabelas incluídas são:
+  - `categorias`
+  - `produtos`
+  - `compras`
+  - `itens_compra`
 
-| Coluna         | Tipo         | Descrição                              |
-|----------------|--------------|----------------------------------------|
-| id             | SERIAL       | Chave primária                         |
-| nome           | VARCHAR(100) | Nome do produto                        |
-| preco          | DECIMAL(10,2)| Preço do produto                       |
-| categoria_id   | INT          | Chave estrangeira (referencia `categorias`) |
-| data_insercao  | DATE         | Data de inserção do produto            |
+- **`populando-tabelas.txt`**: Este arquivo contém comandos SQL para inserir dados de exemplo nas tabelas criadas.
 
-#### 3. **compras**
-Tabela que armazena as compras realizadas no supermercado.
+  Para popular o banco:
+  
+  1. Abra o menu de query no pgAdmin ou terminal.
+  2. Copie e cole o conteúdo do arquivo `populando-tabelas.txt`.
+  3. Execute o script para inserir os dados de exemplo.
 
-| Coluna | Tipo         | Descrição             |
-|--------|--------------|-----------------------|
-| id     | SERIAL       | Chave primária         |
-| data   | DATE         | Data da compra         |
-| total  | DECIMAL(10,2)| Valor total da compra  |
-
-#### 4. **itens_compra**
-Tabela que armazena os itens de uma compra, incluindo produto, quantidade e preço unitário.
-
-| Coluna        | Tipo         | Descrição                              |
-|---------------|--------------|----------------------------------------|
-| id            | SERIAL       | Chave primária                         |
-| compra_id     | INT          | Chave estrangeira (referencia `compras`) |
-| produto_id    | INT          | Chave estrangeira (referencia `produtos`) |
-| quantidade    | INT          | Quantidade do produto comprado         |
-| preco_unitario| DECIMAL(10,2)| Preço unitário do produto              |
 
 ## Funcionalidades
 
